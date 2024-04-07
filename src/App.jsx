@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+import Cookies from "js-cookie";
 
 //page :
 import Home from "./assets/pages/home";
@@ -16,6 +17,8 @@ import Footer from "./components/footer/footer";
 
 function App() {
   const [search, setSearch] = useState("");
+  const [favorites, setFavorites] = useState([]);
+
   return (
     <>
       <Router>
@@ -25,13 +28,32 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route
             path="/personnages"
-            element={<Personnages search={search} setSearch={setSearch} />}
+            element={
+              <Personnages
+                search={search}
+                setSearch={setSearch}
+                favorites={favorites}
+                setFavorites={setFavorites}
+              />
+            }
           />
           <Route
             path="/comics"
-            element={<Comics search={search} setSearch={setSearch} />}
+            element={
+              <Comics
+                search={search}
+                setSearch={setSearch}
+                favorites={favorites}
+                setFavorites={setFavorites}
+              />
+            }
           />
-          <Route path="/favoris" />
+          <Route
+            path="/favoris"
+            element={
+              <Favoris favorites={favorites} setFavorites={setFavorites} />
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

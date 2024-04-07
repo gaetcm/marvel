@@ -7,7 +7,7 @@ header {
   justify-content: center;
 }
 
-button {
+.buttonH {
   margin-right: 25px;
   background-color: #1a1b1d;
   color: gray;
@@ -16,7 +16,7 @@ button {
   border: 3px #1a1b1d solid;
 }
 
-button:hover {
+.buttonH:hover {
   margin-right: 25px;
   color: white;
   border: none;

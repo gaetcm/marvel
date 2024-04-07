@@ -17,18 +17,16 @@ function Header() {
             </Link>
           </div>
           <div className="bar">
-            <div className="customer">
-              <button>CONNEXION</button>
-              <button>S'INSCRIRE</button>
-            </div>
             <div className="persocomics">
               <Link to="/personnages">
-                <button>PERSONNAGES</button>
+                <button className="buttonH">PERSONNAGES</button>
               </Link>
               <Link to="/comics">
-                <button>COMICS</button>
+                <button className="buttonH">COMICS</button>
               </Link>
-              <button>FAVORIS</button>
+              <Link to="/favoris">
+                <button className="buttonH">FAVORIS</button>
+              </Link>
             </div>
           </div>
         </div>

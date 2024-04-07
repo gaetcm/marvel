@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import imgcom from "../img/imgcom2.jpg";
 import { Link } from "react-router-dom";
-import icon from "../img/captain.png";
 
 function Comics({ search, setSearch }) {
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [skip, setSkip] = useState(0);
+  const itemsPerPage = 100;
 
   useEffect(() => {
     const fetchComics = async () => {
@@ -14,7 +16,7 @@ function Comics({ search, setSearch }) {
         setIsLoading(true);
 
         const response = await axios.get(
-          `http://localhost:3000/comics?title=${search}`
+          `http://localhost:3000/comics?title=${search}&skip=${skip}&limit=${itemsPerPage}`
         );
 
         setComics(response.data.results);
@@ -26,7 +28,17 @@ function Comics({ search, setSearch }) {
     };
 
     fetchComics();
-  }, [search]);
+  }, [search, skip]);
+
+  const nextPage = () => {
+    setCurrentPage(currentPage + 1);
+    setSkip(skip + itemsPerPage);
+  };
+
+  const prevPage = () => {
+    setCurrentPage(currentPage - 1);
+    setSkip(skip - itemsPerPage);
+  };
 
   return (
     <>
@@ -63,13 +75,28 @@ function Comics({ search, setSearch }) {
                     backgroundPosition: "center",
                   }}
                 >
-                  <img id="captain" src={icon} alt="icon" />
                   <span className="nomhero">{comic.title}</span>
                 </div>
               </Link>
             ))}
           </div>
-          <div className="persos"></div>
+        </div>
+        <div className="pagination">
+          <button
+            className="buttonpage"
+            onClick={prevPage}
+            disabled={currentPage === 1}
+          >
+            {"<"}
+          </button>
+          {currentPage}
+          <button
+            className="buttonpage"
+            onClick={nextPage}
+            disabled={comics.length < itemsPerPage}
+          >
+            {">"}
+          </button>
         </div>
       </div>
     </>
