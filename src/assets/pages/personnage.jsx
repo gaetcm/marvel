@@ -12,7 +12,9 @@ function Personnage() {
       try {
         setIsLoading(true);
 
-        const response = await axios.get(`http://localhost:3000/comics/${id}`);
+        const response = await axios.get(
+          `https://site--marvelback--gjsk6mhzy5qh.code.run/comics/${id}`
+        );
         console.log(response.data);
         setData(response.data);
       } catch (error) {
@@ -61,9 +63,7 @@ function Personnage() {
                           backgroundSize: "cover",
                           backgroundPosition: "center",
                         }}
-                      >
-                        <span>{elem.title}</span>
-                      </div>
+                      ></div>
                     </div>
                   );
                 })}

@@ -17,7 +17,7 @@ function Personnages({ search, setSearch, favorites, setFavorites }) {
         setIsLoading(true);
 
         const response = await axios.get(
-          `http://localhost:3000/characters?name=${search}&skip=${skip}&limit=${itemsPerPage}`
+          `https://site--marvelback--gjsk6mhzy5qh.code.run/characters?name=${search}&skip=${skip}&limit=${itemsPerPage}`
         );
 
         setCharacters(response.data.results);

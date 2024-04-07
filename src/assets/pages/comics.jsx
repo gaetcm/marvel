@@ -16,7 +16,7 @@ function Comics({ search, setSearch }) {
         setIsLoading(true);
 
         const response = await axios.get(
-          `http://localhost:3000/comics?title=${search}&skip=${skip}&limit=${itemsPerPage}`
+          `https://site--marvelback--gjsk6mhzy5qh.code.run/comics?title=${search}&skip=${skip}&limit=${itemsPerPage}`
         );
 
         setComics(response.data.results);

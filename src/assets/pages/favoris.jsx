@@ -16,7 +16,9 @@ function Favoris() {
       try {
         setIsLoading(true);
 
-        const response = await axios.get(`http://localhost:3000/characters`);
+        const response = await axios.get(
+          `https://site--marvelback--gjsk6mhzy5qh.code.run/characters`
+        );
 
         setCharacters(response.data.results);
       } catch (error) {
